@@ -1,11 +1,10 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using UnityEngine;
 
 public class EnemyCreator : MonoBehaviour
 {
     public Transform parent;
-    public GameObject enemyPrefab;
+    public GameObject[] enemyPrefab;
     public List<Transform> waypoints;
 
     private void Start()
@@ -25,7 +24,7 @@ public class EnemyCreator : MonoBehaviour
 
     void OnEnemyCreation()
     {
-        GameObject createdObject = Instantiate(enemyPrefab, parent,false);
+        GameObject createdObject = Instantiate(enemyPrefab[Random.Range(0, enemyPrefab.Length)], parent, false);
         createdObject.GetComponent<EnenmyMovement>().currentwavepath = GetMyRoute(createdObject.GetComponent<EnenmyMovement>().path);
         createdObject.GetComponent<EnenmyMovement>().speedmultiplier = 50;
     }
@@ -42,7 +41,7 @@ public class EnemyCreator : MonoBehaviour
 }
 
 [System.Serializable]
-public class Waypaths 
+public class Waypaths
 {
     public string pathName;
     public List<int> waypoints;
