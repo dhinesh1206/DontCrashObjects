@@ -8,6 +8,9 @@ public class GameEvents : MonoBehaviour
     public delegate void ParameterlessDelegate();
     public event ParameterlessDelegate onGameStart,onPlayerSwitch,onEnemyCreation;
 
+    public delegate void FollowEnemyDelegate(int enemynumber, int followenemynumber, List<WayPoints> pathnodes, Transform[] currentwaypath);
+    public event FollowEnemyDelegate onEnemyFollow;
+
     private void Awake()
     {
         instance = this;
@@ -23,7 +26,7 @@ public class GameEvents : MonoBehaviour
 
     public void PlayerSwitch() 
     {
-        if(onPlayerSwitch!= null) 
+        if(onPlayerSwitch != null) 
         {
             onPlayerSwitch();
         }  
@@ -31,9 +34,15 @@ public class GameEvents : MonoBehaviour
 
     public void EnemyCreation() 
     {
-        if(onEnemyCreation!= null) 
+        if(onEnemyCreation != null) 
         {
             onEnemyCreation();
+        }
+    }
+
+    public void FollowEnemy(int enemynumber, int followenemynumber, List<WayPoints> pathnodes, Transform[] currentwaypath) {
+        if(onEnemyFollow != null){
+            onEnemyFollow(enemynumber, followenemynumber , pathnodes, currentwaypath);
         }
     }
 }
