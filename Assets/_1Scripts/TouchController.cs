@@ -5,19 +5,13 @@ using HedgehogTeam.EasyTouch;
 
 public class TouchController : MonoBehaviour 
 {
-    private void OnEnable()
+   public void LeftClick()
     {
-        EasyTouch.On_SimpleTap += On_SimpleTap;
+        GameEvents.instance.LeftSidePressed();
     }
 
-    private void OnDisable()
+    public void RightClick()
     {
-        EasyTouch.On_SimpleTap -= On_SimpleTap;
+        GameEvents.instance.RightSidePressed();
     }
-
-    void On_SimpleTap(Gesture gesture)
-    {
-        GameEvents.instance.PlayerSwitch();
-    }
-
 }

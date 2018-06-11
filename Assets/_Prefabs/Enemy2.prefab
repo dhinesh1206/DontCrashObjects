@@ -24,7 +24,7 @@ GameObject:
   - component: {fileID: 23176244051945482}
   m_Layer: 5
   m_Name: Sphere
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -52,7 +52,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1574994695319396}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -2.8043337, y: -1.7626734, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0.2, y: 0.2, z: 0.2}
   m_Children:
   - {fileID: 4365439665866906}
@@ -126,8 +126,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   currentwavepath: []
   pathnodes:
-  - path: 000000000100000002000000030000000400000005000000060000000700000008000000090000000a0000000b0000000c0000000d000000
-  - path: 0e0000000f000000100000001100000012000000130000001400000015000000160000001700000018000000190000001a0000001b000000
+  - path: 0000000001000000020000000c0000000d0000000e000000040000000500000006000000070000000800000009000000
   pathPercentage: 0
   initialPercentage: 0
   speedmultiplier: 30
@@ -146,7 +145,7 @@ SphereCollider:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1248181452105954}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
   m_Radius: 0.5

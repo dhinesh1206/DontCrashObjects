@@ -4,27 +4,33 @@ using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour 
 {
-    public Transform[] outerWayPoints, innerWayPoints,currentWayPoint;
-    public bool playing;
+    public Transform[] outerWayPoints, innerWayPoints,currentWayPoint,middleWayaPoint;
+    public bool playing, LeftSide, RightSide;
     public iTween.EaseType easeType;
-    public float pathPercentage, initialPathPercent, speedMultiplier, nextPathDistance, newPercentage;
+    public float pathPercentage, initialPathPercent, speedMultiplier, nextPathDistance, newPercentage, nextInnerPathDistance, nextOuterPathDistance,dashTime, nextmiddlePathDistance;
     public Vector3 pointonPath,pointonNextPath;
+    public int score, currentLaneIndex;
 
     private void OnEnable()
     {
-        GameEvents.instance.onGameStart += StartGame;
-        GameEvents.instance.onPlayerSwitch += SwitchLanes;
+        GameEvents.instance.OnGameStart += StartGame;
+        GameEvents.instance.OnScoreAdd += OnScoreAdd;
+        GameEvents.instance.OnPlayerLeft += OnPlayerLeft;
+        GameEvents.instance.OnPlayerRight += OnPlayerRight;
     }
 
     private void OnDisable()
     {
-        GameEvents.instance.onGameStart -= StartGame;
-        GameEvents.instance.onPlayerSwitch -= SwitchLanes;
+        GameEvents.instance.OnGameStart -= StartGame;
+        GameEvents.instance.OnScoreAdd -= OnScoreAdd;
+        GameEvents.instance.OnPlayerLeft -= OnPlayerLeft;
+        GameEvents.instance.OnPlayerRight -= OnPlayerRight;
     }
 
     void StartGame () 
     {
         playing = true;
+        RightSide = true;
         currentWayPoint = outerWayPoints;
         pathPercentage = initialPathPercent;
     }
@@ -42,27 +48,116 @@ public class PlayerMovement : MonoBehaviour
         }
 	}
 
+    public void OnPlayerRight()
+    {
+        if (LeftSide)
+        {
+            if(currentWayPoint == outerWayPoints)
+            {
+                playing = false;
+                iTween.Stop(gameObject);
+                pointonPath = iTween.PointOnPath(currentWayPoint, pathPercentage);
+                newPercentage = pathPercentage + nextmiddlePathDistance;
+                pointonNextPath = iTween.PointOnPath(middleWayaPoint, newPercentage);
+                currentWayPoint = middleWayaPoint;
+                iTween.MoveTo(gameObject, iTween.Hash("position", pointonNextPath, "time", (speedMultiplier / 10 * Time.deltaTime) / currentWayPoint.Length, "easetype", easeType, "oncomplete", "PathSwitched"));
+            }
+            else if( currentWayPoint ==  middleWayaPoint)
+            {
+                playing = false;
+                iTween.Stop(gameObject);
+                pointonPath = iTween.PointOnPath(currentWayPoint, pathPercentage);
+                newPercentage = pathPercentage + nextInnerPathDistance;
+                pointonNextPath = iTween.PointOnPath(innerWayPoints, newPercentage);
+                currentWayPoint = innerWayPoints;
+                iTween.MoveTo(gameObject, iTween.Hash("position", pointonNextPath, "time", (speedMultiplier / 10 * Time.deltaTime) / currentWayPoint.Length, "easetype", easeType, "oncomplete", "PathSwitched"));
+            }
+        }
+        else if(RightSide)
+        {
+            if (currentWayPoint == innerWayPoints)
+            {
+                playing = false;
+                iTween.Stop(gameObject);
+                pointonPath = iTween.PointOnPath(currentWayPoint, pathPercentage);
+                newPercentage = pathPercentage + nextmiddlePathDistance;
+                pointonNextPath = iTween.PointOnPath(middleWayaPoint, newPercentage);
+                currentWayPoint = middleWayaPoint;
+                iTween.MoveTo(gameObject, iTween.Hash("position", pointonNextPath, "time", (speedMultiplier / 10 * Time.deltaTime) / currentWayPoint.Length, "easetype", easeType, "oncomplete", "PathSwitched"));
+            }
+            else if (currentWayPoint == middleWayaPoint)
+            {
+                playing = false;
+                iTween.Stop(gameObject);
+                pointonPath = iTween.PointOnPath(currentWayPoint, pathPercentage);
+                newPercentage = pathPercentage + nextInnerPathDistance;
+                pointonNextPath = iTween.PointOnPath(outerWayPoints, newPercentage);
+                currentWayPoint = outerWayPoints;
+                iTween.MoveTo(gameObject, iTween.Hash("position", pointonNextPath, "time", (speedMultiplier / 10 * Time.deltaTime) / currentWayPoint.Length, "easetype", easeType, "oncomplete", "PathSwitched"));
+            }
+        }
+    }
+
+    public void OnPlayerLeft()
+    {
+        if (LeftSide)
+        {
+            if (currentWayPoint == innerWayPoints)
+            {
+                playing = false;
+                iTween.Stop(gameObject);
+                pointonPath = iTween.PointOnPath(currentWayPoint, pathPercentage);
+                newPercentage = pathPercentage + nextmiddlePathDistance;
+                pointonNextPath = iTween.PointOnPath(middleWayaPoint, newPercentage);
+                currentWayPoint = middleWayaPoint;
+                iTween.MoveTo(gameObject, iTween.Hash("position", pointonNextPath, "time", (speedMultiplier / 10 * Time.deltaTime) / currentWayPoint.Length, "easetype", easeType, "oncomplete", "PathSwitched"));
+            }
+            else if (currentWayPoint == middleWayaPoint)
+            {
+                playing = false;
+                iTween.Stop(gameObject);
+                pointonPath = iTween.PointOnPath(currentWayPoint, pathPercentage);
+                newPercentage = pathPercentage + nextInnerPathDistance;
+                pointonNextPath = iTween.PointOnPath(outerWayPoints, newPercentage);
+                currentWayPoint = outerWayPoints;
+                iTween.MoveTo(gameObject, iTween.Hash("position", pointonNextPath, "time", (speedMultiplier / 10 * Time.deltaTime) / currentWayPoint.Length, "easetype", easeType, "oncomplete", "PathSwitched"));
+            }
+        }
+        else if (RightSide)
+        {
+            if (currentWayPoint == outerWayPoints)
+            {
+                playing = false;
+                iTween.Stop(gameObject);
+                pointonPath = iTween.PointOnPath(currentWayPoint, pathPercentage);
+                newPercentage = pathPercentage + nextmiddlePathDistance;
+                pointonNextPath = iTween.PointOnPath(middleWayaPoint, newPercentage);
+                currentWayPoint = middleWayaPoint;
+                iTween.MoveTo(gameObject, iTween.Hash("position", pointonNextPath, "time", (speedMultiplier / 10 * Time.deltaTime) / currentWayPoint.Length, "easetype", easeType, "oncomplete", "PathSwitched"));
+            }
+            else if (currentWayPoint == middleWayaPoint)
+            {
+                playing = false;
+                iTween.Stop(gameObject);
+                pointonPath = iTween.PointOnPath(currentWayPoint, pathPercentage);
+                newPercentage = pathPercentage + nextInnerPathDistance;
+                pointonNextPath = iTween.PointOnPath(innerWayPoints, newPercentage);
+                currentWayPoint = innerWayPoints;
+                iTween.MoveTo(gameObject, iTween.Hash("position", pointonNextPath, "time", (speedMultiplier / 10 * Time.deltaTime) / currentWayPoint.Length, "easetype", easeType, "oncomplete", "PathSwitched"));
+            }
+        }
+    }
+
+    private void OnScoreAdd(Collider other)
+    {
+        score += 1;
+    }
+
     private void OnDrawGizmos()
     {
         iTween.DrawPath(outerWayPoints);
         iTween.DrawPath(innerWayPoints);
-    }
-    public void SwitchLanes() 
-    {
-        playing = false;
-        iTween.Stop(gameObject);
-        pointonPath = iTween.PointOnPath(currentWayPoint,pathPercentage);
-        newPercentage = pathPercentage + nextPathDistance;
-        if(currentWayPoint == outerWayPoints) 
-        {
-            pointonNextPath = iTween.PointOnPath(innerWayPoints, newPercentage);
-            currentWayPoint = innerWayPoints;
-        } else 
-        {
-            pointonNextPath = iTween.PointOnPath(outerWayPoints, newPercentage);
-            currentWayPoint = outerWayPoints;
-        }
-        iTween.MoveTo(gameObject, iTween.Hash("position", pointonNextPath, "time", speedMultiplier/10*Time.deltaTime, "easetype", easeType,"oncomplete","PathSwitched"));
+        iTween.DrawPath(middleWayaPoint);
     }
 
     void PathSwitched() 

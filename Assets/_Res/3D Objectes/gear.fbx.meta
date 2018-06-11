@@ -1,34 +1,19 @@
 fileFormatVersion: 2
-guid: 716e30b7b182f45fd943b00b7a28925a
-timeCreated: 1528353504
+guid: 018479be71e95cc4a8de087ae0e395b7
+timeCreated: 1528523314
 licenseType: Free
 ModelImporter:
   serializedVersion: 22
   fileIDToRecycleName:
     100000: //RootNode
     400000: //RootNode
-    2100000: lambert1
-    2100002: lambert5
-    2100004: lambert4
+    2100000: Gear3D_1_defaultMat1
+    2100002: lambert2
+    2100004: lambert3
     2300000: //RootNode
     3300000: //RootNode
-    4300000: pPyramid1
-  externalObjects:
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: lambert1
-    second: {fileID: 2100000, guid: c80f451e92b4e5347b6e135834a6b2d8, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: lambert4
-    second: {fileID: 2100000, guid: b96fdec4fd2c64c51be35ec6991dfeb1, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: lambert5
-    second: {fileID: 2100000, guid: 9dbce0bc707824359a2476b145ebfb63, type: 2}
+    4300000: Gear
+  externalObjects: {}
   materials:
     importMaterials: 1
     materialName: 0

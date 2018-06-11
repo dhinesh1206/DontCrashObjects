@@ -1,34 +1,19 @@
 fileFormatVersion: 2
-guid: 716e30b7b182f45fd943b00b7a28925a
-timeCreated: 1528353504
+guid: 1a3fbbdf5cb5a404189c35a7b743de0c
+timeCreated: 1528532761
 licenseType: Free
 ModelImporter:
   serializedVersion: 22
   fileIDToRecycleName:
     100000: //RootNode
     400000: //RootNode
-    2100000: lambert1
-    2100002: lambert5
-    2100004: lambert4
+    2100000: blinn1
+    2100002: circle
+    2100004: lambert1
     2300000: //RootNode
     3300000: //RootNode
-    4300000: pPyramid1
-  externalObjects:
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: lambert1
-    second: {fileID: 2100000, guid: c80f451e92b4e5347b6e135834a6b2d8, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: lambert4
-    second: {fileID: 2100000, guid: b96fdec4fd2c64c51be35ec6991dfeb1, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: lambert5
-    second: {fileID: 2100000, guid: 9dbce0bc707824359a2476b145ebfb63, type: 2}
+    4300000: pCylinder1
+  externalObjects: {}
   materials:
     importMaterials: 1
     materialName: 0
@@ -63,7 +48,7 @@ ModelImporter:
     addColliders: 0
     importVisibility: 1
     importBlendShapes: 1
-    importCameras: 0
+    importCameras: 1
     importLights: 1
     swapUVChannels: 0
     generateSecondaryUV: 0

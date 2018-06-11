@@ -6,10 +6,10 @@ public class GameEvents : MonoBehaviour
 {
     public static GameEvents instance;
     public delegate void ParameterlessDelegate();
-    public event ParameterlessDelegate onGameStart,onPlayerSwitch,onEnemyCreation;
+    public event ParameterlessDelegate OnGameStart, OnPlayerSwitch, OnEnemyCreation, OnPlayerLeft,OnPlayerRight;
 
-    public delegate void FollowEnemyDelegate(int enemynumber, int followenemynumber, List<WayPoints> pathnodes, Transform[] currentwaypath);
-    public event FollowEnemyDelegate onEnemyFollow;
+    public delegate void CollisionDelegate(Collider other);
+    public event CollisionDelegate OnPlayerDeath,OnScoreAdd;
 
     private void Awake()
     {
@@ -18,31 +18,57 @@ public class GameEvents : MonoBehaviour
 
     public void GameStart() 
     {
-        if (onGameStart != null) 
+        if (OnGameStart != null) 
         {
-            onGameStart();
+            OnGameStart();
         }   
     }
 
     public void PlayerSwitch() 
     {
-        if(onPlayerSwitch != null) 
+        if(OnPlayerSwitch != null) 
         {
-            onPlayerSwitch();
+            OnPlayerSwitch();
         }  
     }
 
     public void EnemyCreation() 
     {
-        if(onEnemyCreation != null) 
+        if(OnEnemyCreation != null) 
         {
-            onEnemyCreation();
+            OnEnemyCreation();
         }
     }
 
-    public void FollowEnemy(int enemynumber, int followenemynumber, List<WayPoints> pathnodes, Transform[] currentwaypath) {
-        if(onEnemyFollow != null){
-            onEnemyFollow(enemynumber, followenemynumber , pathnodes, currentwaypath);
+    public void PlayerDeath(Collider other)
+    {
+        if(OnPlayerDeath != null)
+        {
+            OnPlayerDeath(other);
+        }
+    }
+
+    public void ScoreAdd(Collider other)
+    {
+        if(OnScoreAdd != null)
+        {
+            OnScoreAdd(other);
+        }
+    }
+    
+    public void LeftSidePressed ()
+    {
+        if(OnPlayerLeft != null)
+        {
+            OnPlayerLeft();
+        }
+    }
+
+    public void RightSidePressed()
+    {
+        if (OnPlayerRight != null)
+        {
+            OnPlayerRight();
         }
     }
 }

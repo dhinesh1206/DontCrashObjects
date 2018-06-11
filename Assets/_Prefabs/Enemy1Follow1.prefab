@@ -21,6 +21,7 @@ GameObject:
   - component: {fileID: 4083812006818508}
   - component: {fileID: 114566812123224368}
   - component: {fileID: 114427701190037606}
+  - component: {fileID: 65353533783147572}
   m_Layer: 5
   m_Name: Enemy1Follow1
   m_TagString: Untagged
@@ -38,9 +39,10 @@ GameObject:
   - component: {fileID: 4246853176202588}
   - component: {fileID: 33470246518726448}
   - component: {fileID: 23987495037625620}
+  - component: {fileID: 65311395972719018}
   m_Layer: 0
   m_Name: box (1)
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -53,7 +55,7 @@ Transform:
   m_GameObject: {fileID: 1861810438601918}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.3, y: 0.3, z: 0.3}
+  m_LocalScale: {x: 0.25, y: 0.25, z: 0.25}
   m_Children:
   - {fileID: 4246853176202588}
   m_Father: {fileID: 0}
@@ -114,6 +116,30 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1975732784904594}
   m_Mesh: {fileID: 4300000, guid: 22ada990f32f349f8ba3d68cccddd0a3, type: 3}
+--- !u!65 &65311395972719018
+BoxCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1975732784904594}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.033993855, y: 0.031678826, z: 0.033738438}
+  m_Center: {x: 0, y: 0, z: 0.0000000018626451}
+--- !u!65 &65353533783147572
+BoxCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1861810438601918}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 3.4148192, y: 3.1845798, z: 1}
+  m_Center: {x: 0.013720592, y: -0.008369684, z: 0}
 --- !u!114 &114427701190037606
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -140,5 +166,5 @@ MonoBehaviour:
   currentwavepath: []
   pathnodes: []
   pathPercentage: 0
-  speedmultiplier: 40
+  speedmultiplier: 25
   initialPercentage: 0

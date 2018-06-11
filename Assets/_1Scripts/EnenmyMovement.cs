@@ -5,14 +5,13 @@ using UnityEngine;
 public class EnenmyMovement : MonoBehaviour 
 {
     public Transform[] currentwavepath;
-    public List<WayPoints> pathnodes;
     public float pathPercentage;
     public float initialPercentage;
     public float speedmultiplier;
     public float nextenemycreationpercentage;
-    public bool nextcalled,child1called = false,child2called = false,child3called = false,child4called= false;
+    public bool nextcalled;
     public int enemyNumber;
-    public Transform gameCreator;
+    public Transform lookAtTransform;
 
 	void Start () 
     {
@@ -27,7 +26,11 @@ public class EnenmyMovement : MonoBehaviour
         {
             Destroy(gameObject);
         }
-        if(pathPercentage > nextenemycreationpercentage/100) 
+        if(lookAtTransform)
+        {
+            transform.LookAt(lookAtTransform);
+        }
+        if(pathPercentage > nextenemycreationpercentage/100 && enemyNumber != 0) 
         {
             if(nextcalled == false) 
             {
@@ -35,36 +38,5 @@ public class EnenmyMovement : MonoBehaviour
                 GameEvents.instance.EnemyCreation();
             }
         }
-        if(enemyNumber == 1) 
-        {
-            if( pathPercentage > 0.1f && !child1called) {
-                child1called = true;
-                GameEvents.instance.FollowEnemy(1, 0,pathnodes, currentwavepath );
-            }
-            if(pathPercentage > 0.2f && !child2called) {
-                child2called = true;
-                GameEvents.instance.FollowEnemy(1, 1,pathnodes, currentwavepath);
-            }
-
-        }
-        if(enemyNumber == 2) 
-        {
-            if(pathPercentage > 0.03f && !child1called) 
-            {
-                child1called = true;
-                GameEvents.instance.FollowEnemy(2, 0, pathnodes, currentwavepath);
-            }
-            if(pathPercentage > 0.06f && !child2called)
-            {
-                child2called = true;
-                GameEvents.instance.FollowEnemy(2, 1, pathnodes, currentwavepath);
-            }
-            if (pathPercentage > 0.09f && !child3called)
-            {
-                child3called = true;
-                GameEvents.instance.FollowEnemy(2, 2, pathnodes, currentwavepath);
-            }
-           
-        }
-	}
+    }
 }
