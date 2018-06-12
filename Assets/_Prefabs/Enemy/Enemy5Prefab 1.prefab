@@ -37,7 +37,6 @@ GameObject:
   - component: {fileID: 33724612055606626}
   - component: {fileID: 135337252419112352}
   - component: {fileID: 23570927983483500}
-  - component: {fileID: 114341709688696814}
   m_Layer: 5
   m_Name: Sphere
   m_TagString: Untagged
@@ -54,6 +53,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4099974796860026}
   - component: {fileID: 114072827869335324}
+  - component: {fileID: 114559445195426468}
   m_Layer: 5
   m_Name: Enemy2
   m_TagString: Untagged
@@ -212,12 +212,12 @@ MonoBehaviour:
   nextcalled: 0
   enemyNumber: 2
   lookAtTransform: {fileID: 4999323561399956}
---- !u!114 &114341709688696814
+--- !u!114 &114559445195426468
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1672327469564514}
+  m_GameObject: {fileID: 1792951148199122}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: a99de0a1288a4fd45a709c4a53ee1adc, type: 3}
@@ -226,8 +226,8 @@ MonoBehaviour:
   sizeTime: 1
   mininterval: 1.5
   maxinterval: 2
-  minSize: {x: 1, y: 1, z: 1}
-  maxSize: {x: 2, y: 2, z: 2}
+  minSize: {x: 2, y: 2, z: 2}
+  maxSize: {x: 4, y: 4, z: 4}
 --- !u!114 &114927484159427824
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -240,7 +240,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pathnodes:
-  - path: 000000000100000002000000030000000400000005000000060000000700000008000000090000000a0000000b0000000c0000000d0000000e000000
+  - path: 0000000001000000020000000300000021000000050000002400000008000000270000000b0000002a0000000d0000002c0000000e000000
 --- !u!135 &135337252419112352
 SphereCollider:
   m_ObjectHideFlags: 1
@@ -280,7 +280,7 @@ RectTransform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1852768115955938}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -0.35843927}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 224221939365722582}
@@ -289,6 +289,6 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -5.4523687, y: -312.524}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}

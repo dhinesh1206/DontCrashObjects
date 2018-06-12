@@ -17,6 +17,7 @@ public class PlayerMovement : MonoBehaviour
         GameEvents.instance.OnScoreAdd += OnScoreAdd;
         GameEvents.instance.OnPlayerLeft += OnPlayerLeft;
         GameEvents.instance.OnPlayerRight += OnPlayerRight;
+        GameEvents.instance.OnPlayerDeath += OnPlayerDeath;
     }
 
     private void OnDisable()
@@ -25,6 +26,7 @@ public class PlayerMovement : MonoBehaviour
         GameEvents.instance.OnScoreAdd -= OnScoreAdd;
         GameEvents.instance.OnPlayerLeft -= OnPlayerLeft;
         GameEvents.instance.OnPlayerRight -= OnPlayerRight;
+        GameEvents.instance.OnPlayerDeath += OnPlayerDeath;
     }
 
     void StartGame () 
@@ -47,6 +49,11 @@ public class PlayerMovement : MonoBehaviour
             }
         }
 	}
+
+    private void OnPlayerDeath(Collider other)
+    {
+        playing = false;
+    }
 
     public void OnPlayerRight()
     {

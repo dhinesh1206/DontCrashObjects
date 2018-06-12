@@ -123,7 +123,7 @@ GameObject:
   - component: {fileID: 224365708697091788}
   - component: {fileID: 114747711884381214}
   m_Layer: 5
-  m_Name: Enemy4Prefab 1
+  m_Name: 6
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -150,7 +150,7 @@ Transform:
   m_GameObject: {fileID: 1213384292147746}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1.419085, y: 1.4190857, z: 1.4190857}
   m_Children:
   - {fileID: 4243701190830648}
   m_Father: {fileID: 4646250519352956}
@@ -164,7 +164,7 @@ Transform:
   m_GameObject: {fileID: 1475129455084336}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -0.972, y: 0, z: 0}
-  m_LocalScale: {x: 1.75, y: 0.1, z: 0.1}
+  m_LocalScale: {x: 1.75, y: 0.19987546, z: 0.16524504}
   m_Children: []
   m_Father: {fileID: 4145634799202254}
   m_RootOrder: 0
@@ -192,7 +192,7 @@ Transform:
   m_GameObject: {fileID: 1268065627203570}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
+  m_LocalScale: {x: 0.78073454, y: 0.78073454, z: 0.78073454}
   m_Children: []
   m_Father: {fileID: 4646250519352956}
   m_RootOrder: 0
@@ -373,6 +373,7 @@ MonoBehaviour:
   speedmultiplier: 30
   nextenemycreationpercentage: 80
   nextcalled: 0
+  playing: 0
   enemyNumber: 0
   lookAtTransform: {fileID: 0}
 --- !u!114 &114188049800312982
@@ -405,6 +406,7 @@ MonoBehaviour:
   speedmultiplier: 30
   nextenemycreationpercentage: 80
   nextcalled: 0
+  playing: 0
   enemyNumber: 2
   lookAtTransform: {fileID: 0}
 --- !u!114 &114747711884381214

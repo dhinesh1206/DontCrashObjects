@@ -9,33 +9,52 @@ public class EnenmyMovement : MonoBehaviour
     public float initialPercentage;
     public float speedmultiplier;
     public float nextenemycreationpercentage;
-    public bool nextcalled;
+    public bool nextcalled,playing;
     public int enemyNumber;
     public Transform lookAtTransform;
 
 	void Start () 
     {
+        playing = true;
         pathPercentage = initialPercentage;
 	}
-	
-	void Update () 
+
+    private void OnEnable()
     {
-        pathPercentage += (speedmultiplier / 10 * Time.deltaTime) / currentwavepath.Length;
-        iTween.PutOnPath(gameObject, currentwavepath, pathPercentage);
-        if(pathPercentage >1 ) 
+        GameEvents.instance.OnPlayerDeath += OnPlayerDeath;
+    }
+
+    public void OnDisable()
+    {
+        GameEvents.instance.OnPlayerDeath -= OnPlayerDeath;
+    }
+
+    private void OnPlayerDeath(Collider other)
+    {
+        playing = false;
+    }
+
+    void Update () 
+    {
+        if (playing)
         {
-            Destroy(gameObject);
-        }
-        if(lookAtTransform)
-        {
-            transform.LookAt(lookAtTransform);
-        }
-        if(pathPercentage > nextenemycreationpercentage/100 && enemyNumber != 0) 
-        {
-            if(nextcalled == false) 
+            pathPercentage += (speedmultiplier / 10 * Time.deltaTime) / currentwavepath.Length;
+            iTween.PutOnPath(gameObject, currentwavepath, pathPercentage);
+            if (pathPercentage > 1)
             {
-                nextcalled = true;
-                GameEvents.instance.EnemyCreation();
+                Destroy(gameObject);
+            }
+            if (lookAtTransform)
+            {
+                transform.LookAt(lookAtTransform);
+            }
+            if (pathPercentage > nextenemycreationpercentage / 100 && enemyNumber != 0)
+            {
+                if (nextcalled == false)
+                {
+                    nextcalled = true;
+                    GameEvents.instance.EnemyCreation();
+                }
             }
         }
     }

@@ -9,8 +9,9 @@ public class EnemyCreator : MonoBehaviour
     public GameObject[] enemyPrefab;
     public List<Transform> waypoints;
     public List<FollowEnemyList> enemyfollowLists;
-    public float score;
+    public int score,enemyPrefabCount;
     public Transform[] currentwaypath;
+
 
     private void Start()
     {
@@ -21,12 +22,47 @@ public class EnemyCreator : MonoBehaviour
     {
         GameEvents.instance.OnGameStart += OnGameStart;
         GameEvents.instance.OnEnemyCreation += OnEnemyCreation;
+        GameEvents.instance.OnScoreAdd += OnScoreAdd;
     }
 
     private void OnDisable()
     {
         GameEvents.instance.OnGameStart -= OnGameStart;
         GameEvents.instance.OnEnemyCreation -= OnEnemyCreation;
+        GameEvents.instance.OnScoreAdd -= OnScoreAdd;
+    }
+
+    private void OnScoreAdd(Collider other)
+    {
+        score += 1;
+        if(score == 2)
+        {
+            enemyPrefabCount += 1;
+        }
+        if(score == 4)
+        {
+            enemyPrefabCount += 1;
+        }
+        if(score == 8)
+        {
+            enemyPrefabCount += 1;
+        }
+        if(score == 12)
+        {
+            enemyPrefabCount += 1;
+        }
+        if(score == 15)
+        {
+            enemyPrefabCount += 1;
+        }
+        if(score == 18)
+        {
+            enemyPrefabCount += 1;
+        }
+        if (score == 20)
+        {
+            enemyPrefabCount += 1;
+        }
     }
 
     private void OnGameStart()
@@ -36,8 +72,8 @@ public class EnemyCreator : MonoBehaviour
 
     void OnEnemyCreation()
     {
-        GameObject createdObject = Instantiate(enemyPrefab[Random.Range(0, enemyPrefab.Length)], parent, false);
-        if(score < 30)
+        GameObject createdObject = Instantiate(enemyPrefab[Random.Range(0, enemyPrefabCount)], parent, false);
+        if(score < 20)
         {
             int index = Random.Range(0, createdObject.GetComponent<EnemyPathNodes>().pathnodes.Count);
             currentwaypath = GetMyRoute(createdObject.GetComponent<EnemyPathNodes>().pathnodes[index].path);
@@ -48,7 +84,7 @@ public class EnemyCreator : MonoBehaviour
                     obj.currentwavepath = currentwaypath;
                 }
             }
-        } else if ( score >= 30)
+        } else if ( score >= 20)
         {
             foreach (Transform enemy in createdObject.transform)
             {

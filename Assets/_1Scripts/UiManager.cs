@@ -19,8 +19,14 @@ public class UiManager : MonoBehaviour
 
     private void OnPlayerDeath(Collider other)
     {
-        gameoverScreen.SetActive(true);
         PlayerScreen.SetActive(false);
+        StartCoroutine(DeathScreen());
+    }
+
+    IEnumerator DeathScreen()
+    {
+        yield return new WaitForSeconds(1.5f);
+        gameoverScreen.SetActive(true);
     }
 
     public void StartGame() 
