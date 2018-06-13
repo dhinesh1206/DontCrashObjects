@@ -947,8 +947,6 @@ MonoBehaviour:
   parent: {fileID: 268489087}
   enemyPrefab:
   - {fileID: 1873007206771736, guid: 0eff68792287c05428ba2b98c06c5f98, type: 2}
-  - {fileID: 1370570809326150, guid: ceea7c16d863be1428386707f556abd2, type: 2}
-  - {fileID: 1355781268241770, guid: 7aa042d6af3fe6846bdc2aa648d64fcb, type: 2}
   - {fileID: 1170121234249230, guid: a73d1a686f1149744b4539314820bf1a, type: 2}
   - {fileID: 1417403930740136, guid: 9ce2b28d2cf3d804a9cc03df48f78471, type: 2}
   - {fileID: 1768774515838924, guid: f46a1a7c31c69b149974d36b79be906c, type: 2}

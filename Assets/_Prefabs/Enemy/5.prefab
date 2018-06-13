@@ -229,8 +229,8 @@ MonoBehaviour:
   currentwavepath: []
   pathPercentage: 0
   initialPercentage: 0.03
-  speedmultiplier: 30
-  nextenemycreationpercentage: 80
+  speedmultiplier: 25
+  nextenemycreationpercentage: 60
   nextcalled: 0
   playing: 0
   enemyNumber: 0
@@ -249,8 +249,8 @@ MonoBehaviour:
   currentwavepath: []
   pathPercentage: 0
   initialPercentage: 0
-  speedmultiplier: 30
-  nextenemycreationpercentage: 80
+  speedmultiplier: 25
+  nextenemycreationpercentage: 60
   nextcalled: 0
   playing: 0
   enemyNumber: 2

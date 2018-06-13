@@ -51,18 +51,18 @@ public class EnemyCreator : MonoBehaviour
         {
             enemyPrefabCount += 1;
         }
-        if(score == 15)
-        {
-            enemyPrefabCount += 1;
-        }
-        if(score == 18)
-        {
-            enemyPrefabCount += 1;
-        }
-        if (score == 20)
-        {
-            enemyPrefabCount += 1;
-        }
+        //if(score == 15)
+        //{
+        //    enemyPrefabCount += 1;
+        //}
+        //if(score == 18)
+        //{
+        //    enemyPrefabCount += 1;
+        //}
+        //if (score == 20)
+        //{
+        //    enemyPrefabCount += 1;
+        //}
     }
 
     private void OnGameStart()
